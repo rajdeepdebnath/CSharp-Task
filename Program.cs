@@ -7,8 +7,22 @@ namespace CSharpTask
     {
         static async Task Main(string[] args)
         {
+            //Task.ContinueWith
+            //var t1 = Task.Run(() => throw new Exception("task 1 exception"));
+
+            //await t1.ContinueWith((antecedent) => Console.WriteLine($"{antecedent.Exception.Message},{antecedent.IsFaulted}, {antecedent.IsCompletedSuccessfully}"))
+            //    .ContinueWith((antecedent) => Console.WriteLine($"{antecedent.IsFaulted},{antecedent.IsCompletedSuccessfully}"));
+
+            //var t2 = Task.Run(() => Console.WriteLine("task 2"));
+
+            //t2.ContinueWith((antecedent) => Console.WriteLine("task 2 chain 1")).
+            //    ContinueWith((antecedent) => Console.WriteLine("task 2 chain 2"));
 
 
+            //Task.Delay(2000).Wait();
+
+
+            //Task.Delay
             //Console.WriteLine("step 1");
 
             //var t1 = Task.Delay(2000);
