@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSharpTask
@@ -7,6 +8,22 @@ namespace CSharpTask
     {
         static async Task Main(string[] args)
         {
+            //Cancellation token
+            var source = new CancellationTokenSource();
+            var token = source.Token;
+
+            var t1 = Task.Run(() => Console.WriteLine($"Cancellation token status, task 1: {token.IsCancellationRequested}"));
+            var t2 = Task.Run(() =>
+            {
+                Console.WriteLine($"Cancellation token status, task 2: {token.IsCancellationRequested}");
+
+                source.Cancel();
+            });
+
+            Task.Delay(700).Wait();
+
+            var t3 = Task.Run(() => Console.WriteLine($"Cancellation token status, task 3: {token.IsCancellationRequested}"));
+
             //Task.ContinueWith
             //var t1 = Task.Run(() => throw new Exception("task 1 exception"));
 
